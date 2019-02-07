@@ -75,10 +75,10 @@ class BowlingTest extends \PHPUnit\Framework\TestCase
     public function getScoreAllFiveAndSpareRolls()
     {
         $rolls = [];
-        for($i=0;$i<10;$i++){
+        for($i=0;$i<9;$i++){
             array_push($rolls, [5, 5]);
         }
-        array_push($rolls, [6, 0]);
+        array_push($rolls, [5, 5, 6]);
 
         $this->assertEquals(151, $this->sut->score($rolls));
     }

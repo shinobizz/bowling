@@ -5,7 +5,6 @@ class Bowling
     public function score($frames){
 
         $score = 0;
-        $accumulated_score = 0;
 
         foreach ($frames as $index => $frame){
 
@@ -19,11 +18,13 @@ class Bowling
             if($is_strike) {
                 // TODO
             }elseif($is_spare){
-                $next_frame = $frames[$index+1];
-                $accumulated_score = 10 + $next_frame[0];
+                if(isset($frames[$index+1])){
+                    $next_frame = $frames[$index+1];
+                    $score += 10 + $next_frame[0];
+                }elseif(isset($frame[2])){
+                    $score += 10 + $frame[2];
+                }
             }else{
-                $score += $accumulated_score;
-                $accumulated_score = 0;
                 $score += $frame[0] + $frame[1];
             }
         }
