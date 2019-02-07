@@ -12,13 +12,25 @@ class BowlingTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function getScoreAllZeroRoll()
+    public function getScoreAllZeroRolls()
     {
         $rolls = [];
         for($i=0;$i<10;$i++){
             array_push($rolls, [0,0]);
         }
-        $this->assertEquals($this->sut->score($rolls), 0);
+        $this->assertEquals(0, $this->sut->score($rolls));
+    }
+
+    /**
+     * @test
+     */
+    public function getScoreAllFiveAndMissRolls()
+    {
+        $rolls = [];
+        for($i=0;$i<10;$i++){
+            array_push($rolls, [5,0]);
+        }
+        $this->assertEquals(50, $this->sut->score($rolls));
     }
 
 }

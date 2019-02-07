@@ -3,6 +3,10 @@
 class Bowling
 {
     public function score($rolls){
-        return 0;
+        $score = 0;
+        foreach ($rolls as $roll){
+            $score += $roll[0];
+        }
+        return $score;
     }
 }
