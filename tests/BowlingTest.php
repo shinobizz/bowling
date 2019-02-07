@@ -82,4 +82,18 @@ class BowlingTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(151, $this->sut->score($rolls));
     }
+
+    /**
+     * @test
+     */
+    public function getScoreAllStrikes()
+    {
+        $rolls = [];
+        for($i=0;$i<9;$i++){
+            array_push($rolls, [10, 0]);
+        }
+        array_push($rolls, [10, 10, 10]);
+
+        $this->assertEquals(300, $this->sut->score($rolls));
+    }
 }
