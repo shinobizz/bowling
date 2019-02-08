@@ -136,4 +136,16 @@ class BowlingTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(97, $this->sut->score($rolls));
     }
+
+    /**
+     * @test
+     */
+    public function checkUncompletedFrame()
+    {
+        $rolls = [];
+        array_push($rolls, [3, ]);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->sut->score($rolls);
+    }
 }

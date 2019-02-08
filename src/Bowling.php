@@ -8,6 +8,10 @@ class Bowling
 
         foreach ($frames as $index => $frame){
 
+            if(!isset($frame[0]) or !isset($frame[1])){
+                throw new InvalidArgumentException('Frame is not completed? Are you cheating?');
+            }
+
             if($frame[0] + $frame[1] > 10 && !isset($frame[2])){
                 throw new InvalidArgumentException('You are hitting more pins than 10? Are you cheating?');
             }
