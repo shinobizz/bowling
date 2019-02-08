@@ -20,7 +20,7 @@ class Bowling
                 if(isset($frames[$index+1])){
                     $next_frame = $frames[$index+1];
                     $first_bonus = $next_frame[0];
-                    $score += 10 + $first_bonus;
+                    $score += $frame[0] + $frame[1] + $first_bonus;
 
                     if($is_strike){
                         $two_next_frame = isset($frames[$index+2]) ? $frames[$index+2] : null;
