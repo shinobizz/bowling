@@ -15,24 +15,26 @@ class Bowling
             $is_strike = $frame[0] == 10;
             $is_spare = $frame[0] + $frame[1] == 10;
 
-            if($is_strike) {
+            if($is_spare or $is_strike){
+
                 if(isset($frames[$index+1])){
                     $next_frame = $frames[$index+1];
-                    $two_next_frame = isset($frames[$index+2]) ? $frames[$index+2] : null;
-                    $score += 10 + $next_frame[0];
-                    $score += ($next_frame[0] == 10 and $two_next_frame) ? $two_next_frame[0] : $next_frame[1];
-                }elseif(isset($frame[2])){
-                    $score += $frame [0] + $frame[1] + $frame[2];
+                    $first_bonus = $next_frame[0];
+                    $score += 10 + $first_bonus;
+
+                    if($is_strike){
+                        $two_next_frame = isset($frames[$index+2]) ? $frames[$index+2] : null;
+                        $second_bonus = ($next_frame[0] == 10 and $two_next_frame) ? $two_next_frame[0] : $next_frame[1];
+                        $score += $second_bonus;
+                    }
                 }
-            }elseif($is_spare){
-                if(isset($frames[$index+1])){
-                    $next_frame = $frames[$index+1];
-                    $score += 10 + $next_frame[0];
-                }elseif(isset($frame[2])){
-                    $score += $frame [0] + $frame[1] + $frame[2];
-                }
+
             }else{
                 $score += $frame[0] + $frame[1];
+            }
+
+            if(isset($frame[2])){
+                $score += $frame[0] + $frame[1] + $frame[2];
             }
         }
 
