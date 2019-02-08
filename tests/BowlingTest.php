@@ -96,4 +96,24 @@ class BowlingTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(300, $this->sut->score($rolls));
     }
+
+    /**
+     * @test
+     */
+    public function checkInvalidFramesWithThreeRollsIfNotLastFrame()
+    {
+        $rolls = [];
+        array_push($rolls, [5, 5]);
+        array_push($rolls, [5, 5]);
+        array_push($rolls, [5, 5]);
+        array_push($rolls, [5, 5]);
+        array_push($rolls, [5, 5, 5]);
+        array_push($rolls, [5, 5]);
+        array_push($rolls, [5, 5]);
+        array_push($rolls, [5, 5]);
+        array_push($rolls, [5, 5]);
+        array_push($rolls, [5, 5, 5]);
+
+        $this->assertEquals(150, $this->sut->score($rolls));
+    }
 }

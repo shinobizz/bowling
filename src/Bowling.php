@@ -33,7 +33,7 @@ class Bowling
                 $score += $frame[0] + $frame[1];
             }
 
-            if(isset($frame[2])){
+            if(isset($frame[2]) and $index == (count($frames) -1)){
                 $score += $frame[0] + $frame[1] + $frame[2];
             }
         }
