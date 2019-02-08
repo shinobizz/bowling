@@ -116,4 +116,24 @@ class BowlingTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(150, $this->sut->score($rolls));
     }
+
+    /**
+     * @test
+     */
+    public function checkComplexGame()
+    {
+        $rolls = [];
+        array_push($rolls, [3, 2]);
+        array_push($rolls, [7, 3]);
+        array_push($rolls, [10, 0]);
+        array_push($rolls, [3, 4]);
+        array_push($rolls, [5, 2, 5]);
+        array_push($rolls, [9, 0]);
+        array_push($rolls, [1, 4]);
+        array_push($rolls, [4, 2]);
+        array_push($rolls, [8, 1]);
+        array_push($rolls, [3, 7, 2]);
+
+        $this->assertEquals(97, $this->sut->score($rolls));
+    }
 }
