@@ -114,7 +114,8 @@ class BowlingTest extends \PHPUnit\Framework\TestCase
         array_push($rolls, [5, 5]);
         array_push($rolls, [5, 5, 5]);
 
-        $this->assertEquals(150, $this->sut->score($rolls));
+        $this->expectException(InvalidArgumentException::class);
+        $this->sut->score($rolls);
     }
 
     /**
@@ -127,7 +128,7 @@ class BowlingTest extends \PHPUnit\Framework\TestCase
         array_push($rolls, [7, 3]);
         array_push($rolls, [10, 0]);
         array_push($rolls, [3, 4]);
-        array_push($rolls, [5, 2, 5]);
+        array_push($rolls, [5, 2]);
         array_push($rolls, [9, 0]);
         array_push($rolls, [1, 4]);
         array_push($rolls, [4, 2]);
